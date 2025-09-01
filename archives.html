@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 40px;
+        }
+        
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #495057;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #4a5568;
+            border-radius: 12px;
+            background-color: #f7fafc;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .card-stats {
+            font-size: 13px;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 992px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-link {
+                margin-bottom: 10px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <h1>Cultural Archives</h1>
+</header>
+        
+        <div class="card-container">
+            <!-- Ancient Manuscripts -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="card-title">Ancient Manuscripts</div>
+                <div class="card-description">Digital preservation of sacred texts and historical documents</div>
+                <div class="card-stats">500+ docs</div>
+            </div>
+            
+            <!-- Oral Histories -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="card-title">Oral Histories</div>
+                <div class="card-description">Recorded stories and traditions from monastery elders</div>
+                <div class="card-stats">200+ recordings</div>
+            </div>
+            
+            <!-- Ritual Documentation -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="card-title">Ritual Documentation</div>
+                <div class="card-description">Video documentation of ceremonies and practices</div>
+                <div class="card-stats">300+ videos</div>
+            </div>
+            
+            <!-- Festival Archives -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="card-title">Festival Archives</div>
+                <div class="card-description">Historical records of festivals and celebrations</div>
+                <div class="card-stats">150+ events</div>
+            </div>
+            
+            <!-- Architectural Records -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="card-title">Architectural Records</div>
+                <div class="card-description">Detailed documentation of monastery architecture</div>
+                <div class="card-stats">1000+ photos</div>
+            </div>
+            
+            <!-- Cultural Stories -->
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="card-title">Cultural Stories</div>
+                <div class="card-description">Legends, myths, and cultural narratives</div>
+                <div class="card-stats">400+ stories</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

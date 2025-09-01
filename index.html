@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikkim Monastery Digital Heritage Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            /* Color System */
+            --primary-orange: #FF5722;
+            --primary-orange-light: #FF7043;
+            --primary-orange-dark: #E64A19;
+            --secondary-blue: #2196F3;
+            --secondary-teal: #009688;
+            --secondary-purple: #9C27B0;
+            --secondary-pink: #E91E63;
+            --secondary-violet: #673AB7;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #F44336;
+            /* Neutral Colors */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-400: #BDBDBD;
+            --gray-500: #9E9E9E;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-800: #424242;
+            --gray-900: #212121;
+            --white: #FFFFFF;
+            --black: #000000;
+            /* Typography */
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            /* Spacing */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            --space-8: 64px;
+            --space-10: 80px;
+            --space-12: 96px;
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 24px;
+            /* Transitions */
+            --transition-fast: 100ms ease-in-out;
+            --transition-normal: 100ms ease-in-out;
+            --transition-slow: 100ms ease-in-out;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+                        url('https://images.pexels.com/photos/3889871/pexels-photo-3889871.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: var(--space-8) 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: var(--font-size-5xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-content h2 {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: var(--space-4);
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-description {
+            font-size: var(--font-size-lg);
+            max-width: 800px;
+            margin: 0 auto var(--space-5);
+            line-height: 1.8;
+            color: var(--gray-200);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-3);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-8);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-orange-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-orange-light);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--gray-800);
+            transform: translateY(-2px);
+            border-color: var(--gray-200);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(00px, 1fr));
+            gap: var(--space-2);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3);
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-2);
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: var(--space-1);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+            color: var(--white);
+        }
+
+        .stat-sublabel {
+            font-size: var(--font-size-sm);
+            color: var(--gray-300);
+        }
+
+        /* Featured Monasteries Section */
+        .featured-monasteries {
+            padding: var(--space-15) 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .section-header p {
+            font-size: var(--font-size-lg);
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .view-all-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--primary-orange);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .view-all-btn:hover {
+            color: var(--primary-orange-dark);
+            transform: translateX(4px);
+        }
+
+        .monasteries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .monastery-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+        }
+
+        .monastery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .monastery-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .monastery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .monastery-card:hover .monastery-image img {
+            transform: scale(1.1);
+        }
+
+        .monastery-badges {
+            position: absolute;
+            top: var(--space-2);
+            left: var(--space-2);
+            right: var(--space-2);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+        }
+
+        .difficulty-badge, .rating-badge, .visitors-badge {
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .difficulty-badge.easy {
+            background: rgba(76, 175, 80, 0.9);
+            color: var(--white);
+        }
+
+        .difficulty-badge.moderate {
+            background: rgba(76, 175, 80, 0.9);
+            color: var(--white);
+        }
+
+        .difficulty-badge.difficult {
+            background: rgba(76, 175, 80, 0.9);
+
+
+            color: var(--white);
+        }
+
+        .rating-badge {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--gray-800);
+        }
+
+        .visitors-badge {
+            background: rgba(33, 150, 243, 0.9);
+            color: var(--white);
+        }
+
+        .monastery-content {
+            padding: var(--space-4);
+        }
+
+        .monastery-content h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .monastery-content p {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+            margin-bottom: var(--space-1);
+        }
+
+        .monastery-content .description {
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: var(--space-2) 0;
+        }
+
+        .monastery-content .founded {
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+
+
+        /* Heritage Platform Section */
+        .heritage-platform {
+            padding: var(--space-10) 0;
+            background-color: var(--gray-50);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--card-color), var(--card-color-light));
+        }
+
+        .feature-card.purple {
+            --card-color: var(--secondary-purple);
+            --card-color-light: #BA68C8;
+        }
+
+        .feature-card.teal {
+            --card-color: var(--secondary-teal);
+            --card-color-light: #4DB6AC;
+        }
+
+        .feature-card.orange {
+            --card-color: var(--primary-orange);
+            --card-color-light: var(--primary-orange-light);
+        }
+
+        .feature-card.pink {
+            --card-color: var(--secondary-pink);
+            --card-color-light: #F06292;
+        }
+
+        .feature-card.blue {
+            --card-color: var(--secondary-blue);
+            --card-color-light: #64B5F6;
+        }
+
+        .feature-card.violet {
+            --card-color: var(--secondary-violet);
+            --card-color-light: #9575CD;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-3);
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: var(--card-color);
+            color: var(--white);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+        }
+
+        .feature-card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Mission Section - Enhanced with animation controls */
+        .mission-section {
+            padding: var(--space-10) 0;
+            background-color: var(--white);
+        }
+
+        .mission-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .mission-content h2 {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .mission-content > p {
+            font-size: var(--font-size-lg);
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: var(--space-8);
+        }
+
+        .mission-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .mission-feature {
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hover effect with controlled timing */
+        .mission-feature:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            z-index: 2;
+        }
+
+        /* Icon animation */
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-3);
+            font-size: var(--font-size-2xl);
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-light));
+            color: var(--white);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .mission-icon.orange {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-light));
+            color: var(--white);
+        }
+
+        .mission-feature:hover .mission-icon {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 20px 25px -5px rgba(255, 87, 34, 0.3);
+        }
+
+        .mission-feature h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .mission-feature p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+            padding: var(--space-10) 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+        }
+
+        .cta-section p {
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto var(--space-6);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-section .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-orange);
+        }
+
+        .cta-section .btn-primary:hover {
+            background-color: var(--gray-100);
+            color: var(--primary-orange-dark);
+        }
+
+        .cta-section .btn-secondary {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-orange);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform var(--transition-normal);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .modal-header h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: var(--space-1);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
+        }
+
+        .modal-close:hover {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .modal-body {
+            padding: var(--space-4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--space-2);
+            }
+            .hero-content h1,
+            .hero-content h2 {
+                font-size: var(--font-size-3xl);
+            }
+            .hero-description {
+                font-size: var(--font-size-base);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-2);
+            }
+            .monasteries-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .mission-features {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary,
+            .btn-secondary {
+                width: 200px;
+            }
+            .view-all-btn {
+                position: static;
+                margin-top: var(--space-3);
+            }
+            .section-header h2 {
+                font-size: var(--font-size-3xl);
+            }
+            .mission-content h2,
+            .cta-section h2 {
+                font-size: var(--font-size-3xl);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .stat-card {
+                padding: var(--space-3);
+            }
+            .monastery-content {
+                padding: var(--space-3);
+            }
+            .feature-card {
+                padding: var(--space-4);
+            }
+            .hero-content h1,
+            .hero-content h2 {
+                font-size: var(--font-size-2xl);
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sikkim Monastery</h1>
+                <h2>Digital Heritage</h2>
+                <p class="hero-description">
+                    Preserving centuries of spiritual wisdom through cutting-edge digital
+                    technology. Explore 200+ sacred monasteries, immerse in virtual tours,
+                    and discover the rich cultural heritage of the Himalayas.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="window.location.href='#monasteries'">Explore Monasteries</button>
+                    <button class="btn-secondary" onclick="window.location.href='virtual-tours.html'">
+  Virtual Tours
+</button>
+
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏛️</div>
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Monasteries</div>
+                        <div class="stat-sublabel">Digitally preserved</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Global Visitors</div>
+                        <div class="stat-sublabel">Monthly platform users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Festivals</div>
+                        <div class="stat-sublabel">Documented annually</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Languages</div>
+                        <div class="stat-sublabel">Content available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <h2>Digitizing Sacred Heritage for Future Generations</h2>
+                <p>Our mission is to preserve and promote Sikkim's monastic traditions through innovative digital solutions, making ancient wisdom accessible to global audiences while supporting cultural tourism and heritage conservation.</p>
+                <div class="mission-features">
+                    <div class="mission-feature">
+                        <div class="mission-icon orange">🗂️</div>
+                        <h3>Cultural Preservation</h3>
+                        <p>Safeguarding endangered traditions, manuscripts, and oral histories for future generations</p>
+                    </div>
+                    <div class="mission-feature">
+                        <div class="mission-icon orange">🌐</div>
+                        <h3>Global Accessibility</h3>
+                        <p>Making Sikkim's spiritual heritage accessible to researchers and devotees worldwide</p>
+                    </div>
+                    <div class="mission-feature">
+                        <div class="mission-icon orange">✈️</div>
+                        <h3>Tourism Growth</h3>
+                        <p>Promoting sustainable cultural tourism through digital engagement and education</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Digital Heritage Platform Section -->
+    <section class="heritage-platform">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Digital Heritage Platform</h2>
+                <p>Six interconnected features designed to preserve, showcase, and share Sikkim's monastic heritage with unprecedented depth and accessibility.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card purple" onclick="window.location.href='monasteries.html'">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-badge">200+ Monasteries</div>
+                    <h3>Monastery Directory</h3>
+                    <p>Explore 200+ monasteries with detailed profiles, history, and visitor information</p>
+                </div>
+                <div class="feature-card teal" onclick="window.location.href='virtual-tours.html'">
+                    <div class="feature-icon">👁️</div>
+                    <div class="feature-badge">50+ Virtual Tours</div>
+                    <h3>Virtual Tours</h3>
+                    <p>360° immersive experiences with VR/AR technology and multimedia guides</p>
+                </div>
+                <div class="feature-card orange" onclick="window.location.href='archives.html'">
+                    <div class="feature-icon">🗂️</div>
+                    <div class="feature-badge">1000+ Documents</div>
+                    <h3>Cultural Archives</h3>
+                    <p>Digital preservation of manuscripts, oral histories, and ancient traditions</p>
+                </div>
+                <div class="feature-card pink" onclick="window.location.href='festivals.html'">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-badge">150+ Events/Year</div>
+                    <h3>Festival Calendar</h3>
+                    <p>Complete guide to monastery festivals, ceremonies, and cultural events</p>
+                </div>
+                <div class="feature-card blue" onclick="window.location.href='maps.html'">
+                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-badge">GPS Navigation</div>
+                    <h3>Interactive Maps</h3>
+                    <p>Detailed mapping with routes, accessibility info, and travel guidance</p>
+                </div>
+                <div class="feature-card violet" onclick="window.location.href='gallery.html'">
+                    <div class="feature-icon">📸</div>
+                    <div class="feature-badge">5000+ Media Files</div>
+                    <h3>Media Gallery</h3>
+                    <p>High-resolution photos, videos, and audio recordings of monastery life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Featured Monasteries Section -->
+    <section id="monasteries" class="featured-monasteries">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Monasteries</h2>
+                <p>Discover some of Sikkim's most significant spiritual centers</p>
+                <button class="view-all-btn" onclick="window.location.href='monasteries.html'">View All 200+ →</button>
+            </div>
+            <div class="monasteries-grid">
+                <div class="monastery-card" onclick="window.location.href='monasteries.html'">
+                    <div class="monastery-image">
+                        <img src="https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg" alt="Sandruptse Monastery">
+                        <div class="monastery-badges">
+                            <span class="difficulty-badge difficult">360° view</span>
+                            <span class="rating-badge">⭐ 4.6</span>
+                            <span class="visitors-badge">👥 7K visitors</span>
+                        </div>
+                    </div>
+                    <div class="monastery-content">
+                        <h3>Sandruptse Monastery</h3>
+                        <p class="location">📍 Namchi, South Sikkim</p>
+                        <p class="distance">🏔️ Sandruptse Hill, 5 km from Namchi town</p>
+                        <p class="elevation">⛰️ 5,500 ft</p>
+                        <p class="description">Modern monastery complex featuring the world's largest statue of Guru Padmasambhava...</p>
+                        <p class="founded">Founded: 1998</p>
+                    </div>
+                </div>
+              
+                <div class="monastery-card" onclick="window.location.href='monasteries.html'">
+                    <div class="monastery-image">
+                        <img src="https://images.pexels.com/photos/7945641/pexels-photo-7945641.jpeg" alt="Do Drul Chorten">
+                        <div class="monastery-badges">
+                            <span class="difficulty-badge easy">360° view</span>
+                            <span class="rating-badge">⭐ 4.5</span>
+                            <span class="visitors-badge">👥 15K visitors</span>
+                        </div>
+                    </div>
+                    <div class="monastery-content">
+                        <h3>Do Drul Chorten</h3>
+                        <p class="location">📍 Gangtok, East Sikkim</p>
+                        <p class="distance">🏔️ Near Institute of Tibetology, Gangtok</p>
+                        <p class="elevation">⛰️ 5,410 ft</p>
+                        <p class="description">Important stupa built by Trulshik Rinpoche to ward off evil and promote peace...</p>
+                        <p class="founded">Founded: 1945</p>
+                    </div>
+                </div>
+                <div class="monastery-card" onclick="window.location.href='monasteries.html'">
+                    <div class="monastery-image">
+                        <img src="https://images.pexels.com/photos/8306678/pexels-photo-8306678.jpeg" alt="Sinon Monastery">
+                        <div class="monastery-badges">
+                            <span class="difficulty-badge moderate">360° view</span>
+                            <span class="rating-badge">⭐ 3.9</span>
+                            <span class="visitors-badge">👥 1K visitors</span>
+                        </div>
+                    </div>
+                    <div class="monastery-content">
+                        <h3>Sinon Monastery</h3>
+                        <p class="location">📍 Sinon, East Sikkim</p>
+                        <p class="distance">🏔️ Sinon village, 25 km from Gangtok via Ranipool</p>
+                        <p class="elevation">⛰️ 3,800 ft</p>
+                        <p class="description">Historic Nyingma monastery known for its ancient manuscripts and traditional architecture...</p>
+                        <p class="founded">Founded: 1716</p>
+                    </div>
+                </div>
+               
+               
+            </div>
+        </div>
+    </section>
+<br>
+<br>
+<br>
+    
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Us in Preserving Himalayan Heritage</h2>
+            <p>Be part of a global movement to preserve and promote Sikkim's spiritual heritage. Whether you're a researcher, devotee, or curious traveler, discover the wisdom of the mountains.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="window.location.href='monasteries.html'">Start Your Journey</button>
+                <button class="btn-secondary" onclick="showContactModal()">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Main JavaScript for Homepage
+        class ScrollAnimator {
+            constructor() {
+                this.observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -100px 0px',
+                    threshold: 0.1
+                };
+                this.observer = new IntersectionObserver(
+                    this.handleIntersection.bind(this),
+                    this.observerOptions
+                );
+                this.init();
+            }
+            init() {
+                this.addAnimationClasses();
+                const animatedElements = document.querySelectorAll('.animate-on-scroll');
+                animatedElements.forEach(el => this.observer.observe(el));
+                this.initHeroAnimations();
+                this.initButtonInteractions();
+                this.initParallax();
+            }
+            addAnimationClasses() {
+                const sections = document.querySelectorAll('.featured-monasteries, .heritage-platform, .mission-section');
+                sections.forEach(section => {
+                    section.classList.add('animate-on-scroll');
+                });
+                const cards = document.querySelectorAll('.monastery-card, .feature-card, .mission-feature');
+                cards.forEach((card, index) => {
+                    card.classList.add('animate-on-scroll');
+                    card.style.transitionDelay = `${index * 0.1}s`;
+                });
+            }
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }
+            initHeroAnimations() {
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.classList.add('fade-in-up');
+                }
+            }
+            initButtonInteractions() {
+                const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+                buttons.forEach(button => {
+                    button.addEventListener('mousedown', () => {
+                        button.style.transform = 'scale(0.95)';
+                    });
+                    button.addEventListener('mouseup', () => {
+                        button.style.transform = '';
+                    });
+                    button.addEventListener('mouseleave', () => {
+                        button.style.transform = '';
+                    });
+                });
+            }
+            initParallax() {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const parallaxElements = document.querySelectorAll('.hero');
+                    parallaxElements.forEach(element => {
+                        const speed = 0.5;
+                        element.style.backgroundPositionY = -(scrolled * speed) + 'px';
+                    });
+                });
+            }
+        }
+
+        class ModalController {
+            constructor() {
+                this.currentModal = null;
+                this.init();
+            }
+            init() {
+                this.createContactModal();
+                this.setupEventListeners();
+            }
+            createContactModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.id = 'contact-modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Contact Us</h3>
+                            <button class="modal-close" onclick="closeModal()">✕</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>For more information about our digital heritage preservation efforts, please contact us:</p>
+                            <p>📧 info@sikkimheritage.org</p>
+                            <p>📞 +91 9876543210</p>
+                            <p>📍 Gangtok, Sikkim, India</p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            setupEventListeners() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.currentModal) {
+                        this.closeCurrentModal();
+                    }
+                });
+                document.addEventListener('click', (e) => {
+                    if (this.currentModal && e.target === this.currentModal) {
+                        this.closeCurrentModal();
+                    }
+                });
+            }
+            openModal(id) {
+                this.currentModal = document.getElementById(id);
+                if (this.currentModal) {
+                    this.currentModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            closeCurrentModal() {
+                if (this.currentModal) {
+                    this.currentModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    this.currentModal = null;
+                }
+            }
+        }
+
+        function showContactModal() {
+            const modalController = new ModalController();
+            modalController.openModal('contact-modal');
+        }
+
+        function closeModal() {
+            const modalController = new ModalController();
+            modalController.closeCurrentModal();
+        }
+
+        function openMonasteryDetail(monasteryId) {
+            alert(`Details for ${monasteryId} monastery would open here. In a real implementation, this would navigate to a detailed view.`);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollAnimator = new ScrollAnimator();
+            const modalController = new ModalController();
+            setTimeout(() => {
+                document.querySelectorAll('.stat-card').forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.2}s`;
+                    card.classList.add('fade-in-up');
+                });
+            }, 500);
+        });
+
+        window.addEventListener('resize', () => {
+            // Any responsive adjustments can be handled here
+        });
+    </script>
+</body>
+</html>

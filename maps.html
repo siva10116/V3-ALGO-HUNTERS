@@ -1,217 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Interactive Maps</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Updated Font Awesome CDN for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
 
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-        }
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .back-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Home icon button styles */
+      .home-icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 8px;
+        background: #f5f7fa;
+        border: 1px solid #e2e8f0;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        color: #333;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+        font-size: 1.15rem;
+      }
+      .home-icon-btn:hover {
+        background: #e2e8f0;
+        color: #4299e1;
+      }
+
+      .page-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+
+      .card-container {
+        margin-bottom: 24px;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .card-header {
+        padding: 16px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .map-preview {
+        height: 240px;
+        background: #edf2f7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .map-preview:hover {
+        background: #e2e8f0;
+      }
+
+      .map-icon {
+        width: 56px;
+        height: 56px;
+        color: #4299e1;
+        margin-bottom: 16px;
+      }
+
+      .map-text {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .map-subtext {
+        font-size: 0.8rem;
+        color: #888;
+        margin-top: 4px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .feature-card {
+        border-radius: 12px;
+        background: white;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+        cursor: default;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        color: #4299e1;
+        margin-bottom: 12px;
+      }
+
+      .feature-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .feature-description {
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        .features-grid {
+          grid-template-columns: 1fr;
         }
 
         .header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 24px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .back-link {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9rem;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
         }
 
         .page-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #1a1a1a;
+          font-size: 1.5rem;
         }
-
-        .card-container {
-            margin-bottom: 24px;
-            border-radius: 12px;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        .card-header {
-            padding: 16px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .map-preview {
-            height: 240px;
-            background: #edf2f7;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .map-preview:hover {
-            background: #e2e8f0;
-        }
-
-        .map-icon {
-            width: 56px;
-            height: 56px;
-            color: #4299e1;
-            margin-bottom: 16px;
-        }
-
-        .map-text {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .map-subtext {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 4px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .feature-card {
-            border-radius: 12px;
-            background: white;
-            padding: 16px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease;
-            cursor: default;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            color: #4299e1;
-            margin-bottom: 12px;
-        }
-
-        .feature-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-
-        .feature-description {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            .page-title {
-                font-size: 1.5rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Back to Home
-            </a>
-            <h1 class="page-title">Interactive Maps</h1>
+      <div class="header">
+        <a href="index.html" class="home-icon-btn" title="Home">
+          <i class="fas fa-home"></i>
+        </a>
+        <h1 class="page-title">Interactive Maps</h1>
+      </div>
+
+      <div class="card-container">
+        <div class="card-header">Interactive Monastery Map</div>
+        <div class="map-preview" onclick="window.location.href='maps1.html'">
+          <div class="map-icon">
+            <i class="fas fa-map"></i>
+          </div>
+          <div class="map-text">
+            Click to explore Interactive map with 200+ monastery locations
+            online!
+          </div>
+          <div class="map-subtext">
+            Features: GPS navigation, route planning, nearby attractions
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <!-- Route Planner -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-route"></i>
+          </div>
+          <div class="feature-title">Route Planner</div>
+          <div class="feature-description">
+            Plan your monastery pilgrimage route
+          </div>
         </div>
 
-        <div class="card-container">
-            <div class="card-header">Interactive Monastery Map</div>
-            <div class="map-preview" onclick="window.location.href='maps1.html'">
-                <div class="map-icon">
-                    <i class="fas fa-map"></i>
-                </div>
-                <div class="map-text">Click to explore Interactive map with 200+ monastery locations online!</div>
-                <div class="map-subtext">Features: GPS navigation, route planning, nearby attractions</div>
-            </div>
+        <!-- Nearby Services -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="feature-title">Nearby Services</div>
+          <div class="feature-description">
+            Find accommodations and restaurants
+          </div>
         </div>
 
-        <div class="features-grid">
-            <!-- Route Planner -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-route"></i>
-                </div>
-                <div class="feature-title">Route Planner</div>
-                <div class="feature-description">Plan your monastery pilgrimage route</div>
-            </div>
-
-            <!-- Nearby Services -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <div class="feature-title">Nearby Services</div>
-                <div class="feature-description">Find accommodations and restaurants</div>
-            </div>
-
-            <!-- Travel Guides -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="feature-title">Travel Guides</div>
-                <div class="feature-description">Local guides and transportation</div>
-            </div>
+        <!-- Travel Guides -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="feature-title">Travel Guides</div>
+          <div class="feature-description">Local guides and transportation</div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

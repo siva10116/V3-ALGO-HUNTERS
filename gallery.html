@@ -1,210 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heritage Documentation</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .back-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            margin-right: 20px;
-        }
-        
-        .back-link i {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-        
-        h1 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #2d3748;
-        }
-        
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .back-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        margin-right: 20px;
+      }
+
+      .back-link i {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #2d3748;
+      }
+
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 16px;
+      }
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #2d3748;
+      }
+
+      .card-subtitle {
+        font-size: 14px;
+        color: #718096;
+        margin-bottom: 16px;
+      }
+
+      .progress-bar {
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+
+      .progress {
+        height: 100%;
+        background-color: #8b5cf6;
+        border-radius: 4px;
+      }
+
+      .progress-text {
+        font-size: 12px;
+        color: #718096;
+      }
+
+      @media (max-width: 768px) {
         .card-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+
+        .back-link {
+          margin-bottom: 10px;
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .icon {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 16px;
-        }
-        
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #2d3748;
-        }
-        
-        .card-subtitle {
-            font-size: 14px;
-            color: #718096;
-            margin-bottom: 16px;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background-color: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-        
-        .progress {
-            height: 100%;
-            background-color: #8b5cf6;
-            border-radius: 4px;
-        }
-        
-        .progress-text {
-            font-size: 12px;
-            color: #718096;
-        }
-        
-        @media (max-width: 768px) {
-            .card-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .back-link {
-                margin-bottom: 10px;
-            }
-        }
+      }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <header>
-           <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
-            <h1>Heritage Documentation</h1>
-        </header>
-        
-        <div class="card-container">
-            <!-- Photo Galleries -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Photo Galleries</div>
-                <div class="card-subtitle">3000+ images</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 85%;"></div>
-                </div>
-                <div class="progress-text">85% digitized</div>
-            </div>
-            
-            <!-- Video Documentation -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Video Documentation</div>
-                <div class="card-subtitle">500+ videos</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 70%;"></div>
-                </div>
-                <div class="progress-text">70% digitized</div>
-            </div>
-            
-            <!-- Audio Guides -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Audio Guides</div>
-                <div class="card-subtitle">150+ tours</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 60%;"></div>
-                </div>
-                <div class="progress-text">60% digitized</div>
-            </div>
-            
-            <!-- Research Papers -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Research Papers</div>
-                <div class="card-subtitle">200+ studies</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 90%;"></div>
-                </div>
-                <div class="progress-text">90% digitized</div>
-            </div>
-            
-            <!-- Community Stories -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Community Stories</div>
-                <div class="card-subtitle">400+ narratives</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 75%;"></div>
-                </div>
-                <div class="progress-text">75% digitized</div>
-            </div>
-            
-            <!-- Digital Exhibitions -->
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-camera" style="color: #8b5cf6; font-size: 24px;"></i>
-                </div>
-                <div class="card-title">Digital Exhibitions</div>
-                <div class="card-subtitle">25+ exhibitions</div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 80%;"></div>
-                </div>
-                <div class="progress-text">80% digitized</div>
-            </div>
+      <header>
+        <a href="index.html" class="back-link"
+          ><i class="fas fa-arrow-left"></i> Back to Home</a
+        >
+        <h1>Heritage Documentation</h1>
+      </header>
+
+      <div class="card-container">
+        <!-- Photo Galleries -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Photo Galleries</div>
+          <div class="card-subtitle">3000+ images</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 85%"></div>
+          </div>
+          <div class="progress-text">85% digitized</div>
         </div>
+
+        <!-- Video Documentation -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Video Documentation</div>
+          <div class="card-subtitle">500+ videos</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 70%"></div>
+          </div>
+          <div class="progress-text">70% digitized</div>
+        </div>
+
+        <!-- Audio Guides -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Audio Guides</div>
+          <div class="card-subtitle">150+ tours</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 60%"></div>
+          </div>
+          <div class="progress-text">60% digitized</div>
+        </div>
+
+        <!-- Research Papers -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Research Papers</div>
+          <div class="card-subtitle">200+ studies</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 90%"></div>
+          </div>
+          <div class="progress-text">90% digitized</div>
+        </div>
+
+        <!-- Community Stories -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Community Stories</div>
+          <div class="card-subtitle">400+ narratives</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%"></div>
+          </div>
+          <div class="progress-text">75% digitized</div>
+        </div>
+
+        <!-- Digital Exhibitions -->
+        <div class="card">
+          <div class="icon">
+            <i
+              class="fas fa-camera"
+              style="color: #8b5cf6; font-size: 24px"
+            ></i>
+          </div>
+          <div class="card-title">Digital Exhibitions</div>
+          <div class="card-subtitle">25+ exhibitions</div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 80%"></div>
+          </div>
+          <div class="progress-text">80% digitized</div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

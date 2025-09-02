@@ -1,615 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtual Tours - Sikkim Monastery Digital Heritage</title>
     <style>
-        /* Reuse the same CSS variables and base styles from index.html */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            /* Color System */
-            --primary-orange: #FF5722;
-            --primary-orange-light: #FF7043;
-            --primary-orange-dark: #E64A19;
-            
-            --secondary-blue: #2196F3;
-            --secondary-teal: #009688;
-            --secondary-purple: #9C27B0;
-            --secondary-pink: #E91E63;
-            --secondary-violet: #673AB7;
-            
-            --success: #4CAF50;
-            --warning: #FF9800;
-            --error: #F44336;
-            
-            /* Neutral Colors */
-            --gray-50: #FAFAFA;
-            --gray-100: #F5F5F5;
-            --gray-200: #EEEEEE;
-            --gray-300: #E0E0E0;
-            --gray-400: #BDBDBD;
-            --gray-500: #9E9E9E;
-            --gray-600: #757575;
-            --gray-700: #616161;
-            --gray-800: #424242;
-            --gray-900: #212121;
-            
-            --white: #FFFFFF;
-            --black: #000000;
-            
-            /* Typography */
-            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 1.875rem;
-            --font-size-4xl: 2.25rem;
-            --font-size-5xl: 3rem;
-            
-            /* Spacing */
-            --space-1: 8px;
-            --space-2: 16px;
-            --space-3: 24px;
-            --space-4: 32px;
-            --space-5: 40px;
-            --space-6: 48px;
-            --space-8: 64px;
-            --space-10: 80px;
-            --space-12: 96px;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-            
-            /* Border Radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            --radius-2xl: 24px;
-            
-            /* Transitions */
-            --transition-fast: 150ms ease-in-out;
-            --transition-normal: 300ms ease-in-out;
-            --transition-slow: 500ms ease-in-out;
-        }
+      :root {
+        --primary-orange: #ff5722;
+        --primary-orange-light: #ff7043;
+        --primary-orange-dark: #e64a19;
 
-        body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--gray-50);
-        }
+        --secondary-blue: #2196f3;
+        --secondary-teal: #009688;
+        --secondary-purple: #9c27b0;
+        --secondary-pink: #e91e63;
+        --secondary-violet: #673ab7;
 
+        --success: #4caf50;
+        --warning: #ff9800;
+        --error: #f44336;
+
+        --gray-50: #fafafa;
+        --gray-100: #f5f5f5;
+        --gray-200: #eeeeee;
+        --gray-300: #e0e0e0;
+        --gray-400: #bdbdbd;
+        --gray-500: #9e9e9e;
+        --gray-600: #757575;
+        --gray-700: #616161;
+        --gray-800: #424242;
+        --gray-900: #212121;
+
+        --white: #ffffff;
+        --black: #000000;
+
+        --font-family: "Inter", system-ui, -apple-system, sans-serif;
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 1.875rem;
+        --font-size-4xl: 2.25rem;
+        --font-size-5xl: 3rem;
+
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-5: 40px;
+        --space-6: 48px;
+        --space-8: 64px;
+        --space-10: 80px;
+        --space-12: 96px;
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+
+        --transition-fast: 150ms ease-in-out;
+        --transition-normal: 300ms ease-in-out;
+        --transition-slow: 500ms ease-in-out;
+      }
+
+      body {
+        font-family: var(--font-family);
+        line-height: 1.6;
+        color: var(--gray-800);
+        background-color: var(--gray-50);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-3);
+      }
+
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-blue),
+          var(--secondary-violet)
+        );
+        color: var(--white);
+        padding: var(--space-8) 0;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: var(--font-size-4xl);
+        font-weight: 700;
+        margin-bottom: var(--space-2);
+      }
+
+      .page-header p {
+        font-size: var(--font-size-lg);
+        max-width: 600px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .vr-banner {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-violet),
+          var(--secondary-purple)
+        );
+        color: var(--white);
+        padding: var(--space-6) 0;
+        text-align: center;
+      }
+
+      .vr-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+      }
+
+      .vr-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .vr-text h2 {
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+        margin-bottom: var(--space-3);
+      }
+
+      .vr-text p {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-4);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .vr-devices {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: var(--space-4);
+        min-width: 300px;
+      }
+
+      .device-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-xl);
+        padding: var(--space-4);
+        text-align: center;
+        min-width: 120px;
+      }
+
+      .device-icon {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--space-2);
+      }
+
+      .device-name {
+        font-weight: 600;
+        margin-bottom: var(--space-1);
+      }
+
+      .device-status {
+        font-size: var(--font-size-sm);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .tours-section {
+        padding: var(--space-6) 0;
+      }
+
+      .tours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: var(--space-4);
+      }
+
+      .tour-card {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all var(--transition-normal);
+        border: 1px solid var(--gray-200);
+        cursor: pointer;
+        position: relative;
+      }
+
+      .tour-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .tour-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .tour-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-slow);
+      }
+
+      .tour-card:hover .tour-image img {
+        transform: scale(1.1);
+      }
+
+      .tour-badge {
+        position: absolute;
+        top: var(--space-2);
+        right: var(--space-2);
+        background: var(--primary-orange);
+        color: var(--white);
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+      }
+
+      .tour-content {
+        padding: var(--space-4);
+      }
+
+      .tour-content h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: var(--space-2);
+      }
+
+      .tour-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-2);
+      }
+
+      .tour-duration,
+      .tour-quality {
+        font-size: var(--font-size-sm);
+        color: var(--gray-600);
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+      }
+
+      .tour-description {
+        color: var(--gray-700);
+        line-height: 1.6;
+        margin-bottom: var(--space-3);
+      }
+
+      .tour-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin-bottom: var(--space-3);
+      }
+
+      .feature-tag {
+        background: var(--gray-100);
+        color: var(--gray-700);
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+      }
+
+      .tour-button {
+        width: 100%;
+        background: var(--secondary-blue);
+        color: var(--white);
+        border: none;
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+      }
+
+      .tour-button:hover {
+        background: var(--secondary-violet);
+      }
+
+      .vr-controls {
+        background: var(--white);
+        padding: var(--space-4) 0;
+        border-top: 1px solid var(--gray-200);
+        position: sticky;
+        bottom: 0;
+        z-index: 100;
+      }
+
+      .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+      }
+
+      .view-toggle {
+        display: flex;
+        gap: var(--space-2);
+      }
+      .view-btn {
+        padding: var(--space-2) var(--space-3);
+        border: 1px solid var(--gray-300);
+        background: var(--white);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+      }
+
+      .view-btn.active {
+        background: var(--secondary-blue);
+        color: var(--white);
+        border-color: var(--secondary-blue);
+      }
+
+      .quality-select {
+        padding: var(--space-2);
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius-md);
+        background: var(--white);
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+      }
+      @media (max-width: 768px) {
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-3);
+          padding: 0 var(--space-2);
         }
-
-        /* Header Styles */
-        .page-header {
-            background: linear-gradient(135deg, var(--secondary-blue), var(--secondary-violet));
-            color: var(--white);
-            padding: var(--space-8) 0;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: var(--font-size-4xl);
-            font-weight: 700;
-            margin-bottom: var(--space-2);
-        }
-
-        .page-header p {
-            font-size: var(--font-size-lg);
-            max-width: 600px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* VR Experience Banner */
-        .vr-banner {
-            background: linear-gradient(135deg, var(--secondary-violet), var(--secondary-purple));
-            color: var(--white);
-            padding: var(--space-6) 0;
-            text-align: center;
-        }
-
         .vr-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-4);
+          flex-direction: column;
+          text-align: center;
         }
-
-        .vr-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .vr-text h2 {
-            font-size: var(--font-size-3xl);
-            font-weight: 700;
-            margin-bottom: var(--space-3);
-        }
-
-        .vr-text p {
-            font-size: var(--font-size-lg);
-            margin-bottom: var(--space-4);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
         .vr-devices {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            gap: var(--space-4);
-            min-width: 300px;
+          justify-content: center;
         }
-
-        .device-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-xl);
-            padding: var(--space-4);
-            text-align: center;
-            min-width: 120px;
-        }
-
-        .device-icon {
-            font-size: var(--font-size-3xl);
-            margin-bottom: var(--space-2);
-        }
-
-        .device-name {
-            font-weight: 600;
-            margin-bottom: var(--space-1);
-        }
-
-        .device-status {
-            font-size: var(--font-size-sm);
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Tours Grid */
-        .tours-section {
-            padding: var(--space-6) 0;
-        }
-
         .tours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: var(--space-4);
+          grid-template-columns: 1fr;
         }
-
-        .tour-card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-normal);
-            border: 1px solid var(--gray-200);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .tour-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .tour-image {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .tour-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-slow);
-        }
-
-        .tour-card:hover .tour-image img {
-            transform: scale(1.1);
-        }
-
-        .tour-badge {
-            position: absolute;
-            top: var(--space-2);
-            right: var(--space-2);
-            background: var(--primary-orange);
-            color: var(--white);
-            padding: var(--space-1) var(--space-2);
-            border-radius: var(--radius-md);
-            font-size: var(--font-size-xs);
-            font-weight: 500;
-        }
-
-        .tour-content {
-            padding: var(--space-4);
-        }
-
-        .tour-content h3 {
-            font-size: var(--font-size-xl);
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-2);
-        }
-
-        .tour-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--space-2);
-        }
-
-        .tour-duration, .tour-quality {
-            font-size: var(--font-size-sm);
-            color: var(--gray-600);
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
-        }
-
-        .tour-description {
-            color: var(--gray-700);
-            line-height: 1.6;
-            margin-bottom: var(--space-3);
-        }
-
-        .tour-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-2);
-            margin-bottom: var(--space-3);
-        }
-
-        .feature-tag {
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: var(--space-1) var(--space-2);
-            border-radius: var(--radius-md);
-            font-size: var(--font-size-xs);
-            font-weight: 500;
-        }
-
-        .tour-button {
-            width: 100%;
-            background: var(--secondary-blue);
-            color: var(--white);
-            border: none;
-            padding: var(--space-2);
-            border-radius: var(--radius-md);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-        }
-
-        .tour-button:hover {
-            background: var(--secondary-violet);
-        }
-
-        /* VR Controls */
-        .vr-controls {
-            background: var(--white);
-            padding: var(--space-4) 0;
-            border-top: 1px solid var(--gray-200);
-            position: sticky;
-            bottom: 0;
-            z-index: 100;
-        }
-
         .controls-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-3);
+          flex-direction: column;
+          align-items: stretch;
         }
-
         .view-toggle {
-            display: flex;
-            gap: var(--space-2);
+          justify-content: center;
         }
-
-        .view-btn {
-            padding: var(--space-2) var(--space-3);
-            border: 1px solid var(--gray-300);
-            background: var(--white);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            transition: all var(--transition-normal);
+      }
+      .no-tours-message {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: var(--space-6);
+        font-size: var(--font-size-lg);
+        color: var(--gray-600);
+        width: 100%;
+      }
+      @media (max-width: 480px) {
+        .page-header h1 {
+          font-size: var(--font-size-3xl);
         }
-
-        .view-btn.active {
-            background: var(--secondary-blue);
-            color: var(--white);
-            border-color: var(--secondary-blue);
+        .page-header p {
+          font-size: var(--font-size-base);
         }
-
-        .quality-select {
-            padding: var(--space-2);
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius-md);
-            background: var(--white);
-            font-size: var(--font-size-sm);
-            cursor: pointer;
+        .vr-text h2 {
+          font-size: var(--font-size-2xl);
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 var(--space-2);
-            }
-            
-            .vr-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .vr-devices {
-                justify-content: center;
-            }
-            
-            .tours-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .controls-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .view-toggle {
-                justify-content: center;
-            }
+        .vr-text p {
+          font-size: var(--font-size-base);
         }
-
-        @media (max-width: 480px) {
-            .page-header h1 {
-                font-size: var(--font-size-3xl);
-            }
-            
-            .page-header p {
-                font-size: var(--font-size-base);
-            }
-            
-            .vr-text h2 {
-                font-size: var(--font-size-2xl);
-            }
-            
-            .vr-text p {
-                font-size: var(--font-size-base);
-            }
-            
-            .vr-devices {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .device-card {
-                width: 100%;
-                max-width: 200px;
-            }
+        .vr-devices {
+          flex-direction: column;
+          align-items: center;
         }
+        .device-card {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+      /* VR Modal Styles */
+      #vr-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      #vr-modal.active {
+        display: flex;
+      }
+      #vr-modal > div {
+        background: #fff;
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+        max-width: 700px;
+        width: 95%;
+        position: relative;
+      }
+      #close-modal {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      #modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+      #modal-video {
+        width: 100%;
+        height: 400px;
+        max-width: 640px;
+        margin: auto;
+      }
+      @media (max-width: 700px) {
+        #vr-modal > div {
+          padding: 16px;
+        }
+        #modal-video {
+          height: 220px;
+        }
+      }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Page Header -->
     <header class="page-header">
-        <div class="container">
-            <h1>Virtual Tours</h1>
-            <p>Immerse yourself in 360° experiences of Sikkim's sacred monasteries with our cutting-edge virtual reality technology</p>
-        </div>
+      <div class="container">
+        <h1>Virtual Tours</h1>
+        <p>
+          Immerse yourself in 360° experiences of Sikkim's sacred monasteries
+          with our cutting-edge virtual reality technology
+        </p>
+      </div>
     </header>
-
     <!-- Tours Grid -->
     <section class="tours-section">
-        <div class="container">
-            <div class="tours-grid" id="tours-container">
-                <!-- Tour cards will be dynamically populated -->
-            </div>
+      <div class="container">
+        <div class="tours-grid" id="tours-container">
+          <!-- Tour cards will be dynamically populated -->
         </div>
+      </div>
     </section>
-
+    <!-- VR Modal -->
+    <div id="vr-modal">
+      <div>
+        <button id="close-modal">&times;</button>
+        <div id="modal-title"></div>
+        <div id="modal-video"></div>
+      </div>
+    </div>
     <!-- VR Controls -->
     <section class="vr-controls">
-        <div class="container">
-            <div class="controls-container">
-                <div class="view-toggle">
-                    <button class="view-btn active" onclick="changeView('all')">All Tours</button>
-                    <button class="view-btn" onclick="changeView('featured')">Featured</button>
-                    <button class="view-btn" onclick="changeView('new')">New</button>
-                    <button class="view-btn" onclick="changeView('popular')">Popular</button>
-                </div>
-                <select class="quality-select" id="quality-select">
-                    <option value="auto">Auto Quality</option>
-                    <option value="low">Low (Mobile)</option>
-                    <option value="medium">Medium (Tablet)</option>
-                    <option value="high">High (Desktop)</option>
-                    <option value="ultra">Ultra (VR)</option>
-                </select>
-            </div>
+      <div class="container">
+        <div class="controls-container">
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="all">All Tours</button>
+            <button class="view-btn" data-view="featured">Featured</button>
+            <button class="view-btn" data-view="new">New</button>
+            <button class="view-btn" data-view="popular">Popular</button>
+          </div>
+          <select class="quality-select" id="quality-select">
+            <option value="auto">Auto Quality</option>
+            <option value="low">Low (Mobile)</option>
+            <option value="medium">Medium (Tablet)</option>
+            <option value="high">High (Desktop)</option>
+            <option value="ultra">Ultra (VR)</option>
+          </select>
         </div>
+      </div>
     </section>
 
     <script>
-        // Sample tour data
-        const tours = [
-            {
-                id: 'sandruptse-vr',
-                name: 'Sandruptse Monastery VR Tour',
-                monastery: 'Sandruptse Monastery',
-                duration: '45 min',
-                quality: '4K Ultra HD',
-                description: 'Complete 360° tour of the magnificent Sandruptse Monastery, featuring the world\'s largest statue of Guru Padmasambhava.',
-                features: ['360° Views', 'Audio Guide', 'Interactive Hotspots', 'VR Supported'],
-                image: 'https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg',
-                isFeatured: true,
-                isNew: false,
-                popularity: 95
-            },
-            {
-                id: 'rumtek-immersion',
-                name: 'Rumtek Monastery Immersion',
-                monastery: 'Rumtek Monastery',
-                duration: '60 min',
-                quality: '8K VR Ready',
-                description: 'Deep dive into the largest monastery in Sikkim, seat of the Karmapa lineage with detailed historical commentary.',
-                features: ['8K Resolution', 'Multi-language', 'Historical Commentary', 'VR Exclusive'],
-                image: 'https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg',
-                isFeatured: true,
-                isNew: true,
-                popularity: 92
-            },
-            {
-                id: 'pemayangtse-journey',
-                name: 'Pemayangtse Sacred Journey',
-                monastery: 'Pemayangtse Monastery',
-                duration: '35 min',
-                quality: '4K HD',
-                description: 'Explore one of Sikkim\'s oldest monasteries with focus on ancient artifacts and architectural details.',
-                features: ['Artifact Focus', 'Architectural Details', 'Cultural Insights', 'Mobile Optimized'],
-                image: 'https://images.pexels.com/photos/7945641/pexels-photo-7945641.jpeg',
-                isFeatured: false,
-                isNew: true,
-                popularity: 88
-            },
-            {
-                id: 'tashiding-360',
-                name: 'Tashiding 360 Experience',
-                monastery: 'Tashiding Monastery',
-                duration: '50 min',
-                quality: '4K Ultra HD',
-                description: 'Comprehensive tour of the sacred Tashiding Monastery, believed to be blessed by Guru Padmasambhava.',
-                features: ['Panoramic Views', 'Spiritual Guidance', 'Seasonal Content', 'Downloadable'],
-                image: 'https://images.pexels.com/photos/8306678/pexels-photo-8306678.jpeg',
-                isFeatured: true,
-                isNew: false,
-                popularity: 90
-            },
-            {
-                id: 'enchay-cultural',
-                name: 'Enchey Cultural Tour',
-                monastery: 'Enchey Monastery',
-                duration: '30 min',
-                quality: '4K HD',
-                description: 'Cultural exploration of the 200-year-old Enchey Monastery, famous for its annual Chaam dances.',
-                features: ['Cultural Focus', 'Dance Demonstrations', 'Festival Coverage', 'Family Friendly'],
-                image: 'https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg',
-                isFeatured: false,
-                isNew: false,
-                popularity: 85
-            },
-            {
-                id: 'sang-peaceful',
-                name: 'Sang Monastery Peaceful Retreat',
-                monastery: 'Sang Monastery',
-                duration: '40 min',
-                quality: '4K Ultra HD',
-                description: 'Tranquil tour of the ancient Sang Monastery, focusing on its peaceful setting and meditation spaces.',
-                features: ['Meditation Guidance', 'Peaceful Atmosphere', 'Nature Sounds', 'Relaxation Focus'],
-                image: 'https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg',
-                isFeatured: false,
-                isNew: true,
-                popularity: 87
-            }
-        ];
+      // Sample tour data with video links
+      const tours = [
+        {
+          id: "sandruptse-vr",
+          name: "Sandruptse Monastery VR Tour",
+          monastery: "Sandruptse Monastery",
+          duration: "45 min",
+          quality: "4K Ultra HD",
+          description:
+            "Complete 360° tour of the magnificent Sandruptse Monastery, featuring the world's largest statue of Guru Padmasambhava.",
+          features: [
+            "360° Views",
+            "Audio Guide",
+            "Interactive Hotspots",
+            "VR Supported",
+          ],
+          image:
+            "https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg",
+          isFeatured: true,
+          isNew: false,
+          popularity: 95,
+          video:
+            "https://www.youtube.com/embed/TAsbsQMxlms?si=0f8pJI5oBCKaR2W6",
+        },
+        {
+          id: "rumtek-immersion",
+          name: "Rumtek Monastery Immersion",
+          monastery: "Rumtek Monastery",
+          duration: "60 min",
+          quality: "8K VR Ready",
+          description:
+            "Deep dive into the largest monastery in Sikkim, seat of the Karmapa lineage with detailed historical commentary.",
+          features: [
+            "8K Resolution",
+            "Multi-language",
+            "Historical Commentary",
+            "VR Exclusive",
+          ],
+          image:
+            "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
+          isFeatured: true,
+          isNew: true,
+          popularity: 92,
+          video:
+            "https://www.youtube.com/embed/9JvxfFO2a6c?si=yG_KR6evl-cIgUDU",
+        },
+        {
+          id: "pemayangtse-journey",
+          name: "Pemayangtse Sacred Journey",
+          monastery: "Pemayangtse Monastery",
+          duration: "35 min",
+          quality: "4K HD",
+          description:
+            "Explore one of Sikkim's oldest monasteries with focus on ancient artifacts and architectural details.",
+          features: [
+            "Artifact Focus",
+            "Architectural Details",
+            "Cultural Insights",
+            "Mobile Optimized",
+          ],
+          image:
+            "https://images.pexels.com/photos/7945641/pexels-photo-7945641.jpeg",
+          isFeatured: false,
+          isNew: true,
+          popularity: 88,
+          video:
+            "https://www.youtube.com/embed/WXBrwaIirCw?si=QrVrPmxWyp5bhJub",
+        },
+        {
+          id: "tashiding-360",
+          name: "Tashiding 360 Experience",
+          monastery: "Tashiding Monastery",
+          duration: "50 min",
+          quality: "4K Ultra HD",
+          description:
+            "Comprehensive tour of the sacred Tashiding Monastery, believed to be blessed by Guru Padmasambhava.",
+          features: [
+            "Panoramic Views",
+            "Spiritual Guidance",
+            "Seasonal Content",
+            "Downloadable",
+          ],
+          image:
+            "https://images.pexels.com/photos/8306678/pexels-photo-8306678.jpeg",
+          isFeatured: true,
+          isNew: false,
+          popularity: 90,
+          video:
+            "https://www.youtube.com/embed/RCVaI2vAROw?si=ZYoRGgNEvD82NEqZ",
+        },
+        {
+          id: "enchay-cultural",
+          name: "Enchey Cultural Tour",
+          monastery: "Enchey Monastery",
+          duration: "30 min",
+          quality: "4K HD",
+          description:
+            "Cultural exploration of the 200-year-old Enchey Monastery, famous for its annual Chaam dances.",
+          features: [
+            "Cultural Focus",
+            "Dance Demonstrations",
+            "Festival Coverage",
+            "Family Friendly",
+          ],
+          image:
+            "https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg",
+          isFeatured: false,
+          isNew: false,
+          popularity: 85,
+          video:
+            "https://www.youtube.com/embed/GOL5RTd-WDk?si=vWSASjhrh2tJklM5",
+        },
+        {
+          id: "sang-peaceful",
+          name: "Sang Monastery Peaceful Retreat",
+          monastery: "Sang Monastery",
+          duration: "40 min",
+          quality: "4K Ultra HD",
+          description:
+            "Tranquil tour of the ancient Sang Monastery, focusing on its peaceful setting and meditation spaces.",
+          features: [
+            "Meditation Guidance",
+            "Peaceful Atmosphere",
+            "Nature Sounds",
+            "Relaxation Focus",
+          ],
+          image:
+            "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
+          isFeatured: false,
+          isNew: true,
+          popularity: 87,
+          video:
+            "https://www.youtube.com/embed/XaJI75OYGBc?si=kgSA5hwZxoWkSjyB",
+        },
+      ];
 
-        // Filter tours based on view type
-        function changeView(viewType) {
-            // Update button states
-            const buttons = document.querySelectorAll('.view-btn');
-            buttons.forEach(button => button.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            let filteredTours = [];
-            
-            switch(viewType) {
-                case 'all':
-                    filteredTours = tours;
-                    break;
-                case 'featured':
-                    filteredTours = tours.filter(tour => tour.isFeatured);
-                    break;
-                case 'new':
-                    filteredTours = tours.filter(tour => tour.isNew);
-                    break;
-                case 'popular':
-                    filteredTours = [...tours].sort((a, b) => b.popularity - a.popularity);
-                    break;
-                default:
-                    filteredTours = tours;
-            }
-            
-            displayTours(filteredTours);
+      function displayTours(toursToShow) {
+        const container = document.getElementById("tours-container");
+        container.innerHTML = "";
+
+        if (toursToShow.length === 0) {
+          container.innerHTML =
+            '<p class="no-tours-message">No tours found matching your criteria.</p>';
+          return;
         }
 
-        function displayTours(toursToShow) {
-            const container = document.getElementById('tours-container');
-            container.innerHTML = '';
-            
-            if (toursToShow.length === 0) {
-                container.innerHTML = '<p class="text-center">No tours found matching your criteria.</p>';
-                return;
-            }
-            
-            toursToShow.forEach(tour => {
-                const card = document.createElement('div');
-                card.className = 'tour-card';
-                card.innerHTML = `
-                    <div class="tour-image">
-                        <img src="${tour.image}" alt="${tour.name}">
-                        <div class="tour-badge">VR READY</div>
-                    </div>
-                    <div class="tour-content">
-                        <h3>${tour.name}</h3>
-                        <div class="tour-meta">
-                            <span class="tour-duration">⏱️ ${tour.duration}</span>
-                            <span class="tour-quality">📺 ${tour.quality}</span>
-                        </div>
-                        <p class="tour-description">${tour.description}</p>
-                        <div class="tour-features">
-                            ${tour.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
-                        </div>
-                        <button class="tour-button" onclick="startTour('${tour.id}')">Start Virtual Tour</button>
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
-        }
-
-        function startTour(tourId) {
-            alert(`Starting virtual tour: ${tourId}. In a real implementation, this would launch the VR experience.`);
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set up event listener for quality selection
-            document.getElementById('quality-select').addEventListener('change', function() {
-                alert(`Video quality set to: ${this.value}. This would adjust the streaming quality in a real implementation.`);
-            });
-            
-            // Display all tours initially
-            displayTours(tours);
+        toursToShow.forEach((tour) => {
+          const card = document.createElement("div");
+          card.className = "tour-card";
+          card.innerHTML = `
+          <div class="tour-image">
+            <img src="${tour.image}" alt="${tour.name}">
+            <div class="tour-badge">VR READY</div>
+          </div>
+          <div class="tour-content">
+            <h3>${tour.name}</h3>
+            <div class="tour-meta">
+              <span class="tour-duration">⏱ ${tour.duration}</span>
+              <span class="tour-quality">📺 ${tour.quality}</span>
+            </div>
+            <p class="tour-description">${tour.description}</p>
+            <div class="tour-features">
+              ${tour.features
+                .map((feature) => `<span class="feature-tag">${feature}</span>`)
+                .join("")}
+            </div>
+            <button class="tour-button" data-tour="${
+              tour.id
+            }">Start Virtual Tour</button>
+          </div>
+        `;
+          container.appendChild(card);
         });
+
+        document.querySelectorAll(".tour-button").forEach((btn) => {
+          btn.onclick = function () {
+            const tid = btn.getAttribute("data-tour");
+            const thisTour = tours.find((t) => t.id === tid);
+            if (thisTour) {
+              document.getElementById("modal-title").textContent =
+                thisTour.name;
+              document.getElementById(
+                "modal-video"
+              ).innerHTML = `<iframe width="100%" height="100%" src="${thisTour.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+              document.getElementById("vr-modal").classList.add("active");
+            }
+          };
+        });
+      }
+
+      document.getElementById("close-modal").onclick = function () {
+        document.getElementById("vr-modal").classList.remove("active");
+        document.getElementById("modal-video").innerHTML = "";
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        displayTours(tours);
+
+        document
+          .getElementById("quality-select")
+          .addEventListener("change", function () {
+            alert(
+              `Video quality set to: ${this.value}. This would adjust the streaming quality in a real implementation.`
+            );
+          });
+
+        const viewButtons = document.querySelectorAll(".view-btn");
+        viewButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            viewButtons.forEach((btn) => btn.classList.remove("active"));
+            event.currentTarget.classList.add("active");
+
+            const viewType = event.currentTarget.dataset.view;
+            let filteredTours = [];
+
+            switch (viewType) {
+              case "all":
+                filteredTours = tours;
+                break;
+              case "featured":
+                filteredTours = tours.filter((tour) => tour.isFeatured);
+                break;
+              case "new":
+                filteredTours = tours.filter((tour) => tour.isNew);
+                break;
+              case "popular":
+                filteredTours = [...tours].sort(
+                  (a, b) => b.popularity - a.popularity
+                );
+                break;
+            }
+            displayTours(filteredTours);
+          });
+        });
+      });
     </script>
-</body>
+  </body>
 </html>

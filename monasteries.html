@@ -371,354 +371,473 @@
     />
   </head>
   <body>
-    <!-- Page Header -->
-    <header class="page-header">
-      <div class="container">
-        <h1>Monastery Directory</h1>
-        <p>
-          Explore 200+ sacred monasteries across Sikkim with detailed
-          information, visitor guides, and cultural insights
-        </p>
-      </div>
-    </header>
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Monastery Directory</h1>
+      <p>
+        Explore 200+ sacred monasteries across Sikkim with detailed
+        information, visitor guides, and cultural insights
+      </p>
+    </div>
+  </header>
 
-    <!-- Filter Section -->
-    <section class="filter-section">
-      <div class="container">
-        <div class="filter-container">
-          <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input
-              type="text"
-              placeholder="Search monasteries..."
-              id="search-input"
-            />
-          </div>
-          <div class="filter-group">
-            <select class="filter-select" id="region-filter">
-              <option value="">All Regions</option>
-              <option value="east">East Sikkim</option>
-              <option value="west">West Sikkim</option>
-              <option value="north">North Sikkim</option>
-              <option value="south">South Sikkim</option>
-            </select>
-            <select class="filter-select" id="sect-filter">
-              <option value="">All Sects</option>
-              <option value="nyingma">Nyingma</option>
-              <option value="kagyu">Kagyu</option>
-              <option value="sakya">Sakya</option>
-              <option value="gelug">Gelug</option>
-            </select>
-            <!-- Removed difficulty filter dropdown as requested -->
-          </div>
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-container">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search monasteries..." id="search-input" />
+        </div>
+        <div class="filter-group">
+          <select class="filter-select" id="region-filter">
+            <option value="">All Regions</option>
+            <option value="east">East Sikkim</option>
+            <option value="west">West Sikkim</option>
+            <option value="north">North Sikkim</option>
+            <option value="south">South Sikkim</option>
+          </select>
+          <select class="filter-select" id="sect-filter">
+            <option value="">All Sects</option>
+            <option value="nyingma">Nyingma</option>
+            <option value="kagyu">Kagyu</option>
+            <option value="sakya">Sakya</option>
+            <option value="gelug">Gelug</option>
+          </select>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Monasteries Grid -->
-    <section class="monasteries-section">
-      <div class="container">
-        <div class="monasteries-grid" id="monasteries-container">
-          <!-- Monastery cards will be dynamically populated -->
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination" id="pagination">
-          <!-- Pagination buttons will be dynamically populated -->
-        </div>
+  <!-- Monasteries Grid -->
+  <section class="monasteries-section">
+    <div class="container">
+      <div class="monasteries-grid" id="monasteries-container">
+        <!-- Cards will be populated dynamically -->
       </div>
-    </section>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </section>
 
-    <script>
-      // Sample monastery data
-      const monasteries = [
-        {
-          id: "sandruptse",
-          name: "Sandruptse Monastery",
-          location: "Namchi, South Sikkim",
-          distance: "Sandruptse Hill, 5 km from Namchi town",
-          elevation: "5,500 ft",
-          description:
-            "Modern monastery complex featuring the world's largest statue of Guru Padmasambhava...",
-          founded: "1998",
-          difficulty: "difficult",
-          rating: 4.6,
-          visitors: 7000,
-          region: "south",
-          sect: "nyingma",
-          image: "./assests/samduptse hill.jpg",
-        },
-        {
-          id: "sang",
-          name: "Sang Monastery",
-          location: "Sang, South Sikkim",
-          distance: "Sang village, 12 km from Namchi towards Ravangla",
-          elevation: "4,800 ft",
-          description:
-            "Ancient monastery known for its peaceful setting and traditional Nyingma teachings...",
-          founded: "1716",
-          difficulty: "easy",
-          rating: 4.0,
-          visitors: 1500,
-          region: "south",
-          sect: "nyingma",
-          image:
-            "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
-        },
-        {
-          id: "dodrul",
-          name: "Do Drul Chorten",
-          location: "Gangtok, East Sikkim",
-          distance: "Near Institute of Tibetology, Gangtok",
-          elevation: "5,410 ft",
-          description:
-            "Important stupa built by Trulshik Rinpoche to ward off evil and promote peace...",
-          founded: "1945",
-          difficulty: "easy",
-          rating: 4.5,
-          visitors: 15000,
-          region: "east",
-          sect: "nyingma",
-          image: "./assests/do-drul.jpg",
-        },
-        {
-          id: "sinon",
-          name: "Sinon Monastery",
-          location: "Sinon, East Sikkim",
-          distance: "Sinon village, 25 km from Gangtok via Ranipool",
-          elevation: "3,800 ft",
-          description:
-            "Historic Nyingma monastery known for its ancient manuscripts and traditional architecture...",
-          founded: "1716",
-          difficulty: "moderate",
-          rating: 3.9,
-          visitors: 1000,
-          region: "east",
-          sect: "nyingma",
-          image: "./assests/Sinon_Monastery,_West_Sikkim_06.jpg",
-        },
-        {
-          id: "pemayangtse",
-          name: "Pemayangtse Monastery",
-          location: "Pelling, West Sikkim",
-          distance: "Pelling, 7 km from Gyalshing",
-          elevation: "6,840 ft",
-          description:
-            "One of Sikkim's oldest and most important monasteries of the Nyingma sect...",
-          founded: "1705",
-          difficulty: "moderate",
-          rating: 4.7,
-          visitors: 12000,
-          region: "west",
-          sect: "nyingma",
-          image: "./assests/Pemayangtse_Monastery,_Pelling,_West_Sikkim_15.jpg",
-        },
-        {
-          id: "tashiding",
-          name: "Tashiding Monastery",
-          location: "Tashiding, West Sikkim",
-          distance: "Tashiding hilltop, 19 km from Yoksum",
-          elevation: "4,790 ft",
-          description:
-            "Sacred monastery believed to be blessed by Guru Padmasambhava himself...",
-          founded: "1641",
-          difficulty: "difficult",
-          rating: 4.8,
-          visitors: 8000,
-          region: "west",
-          sect: "nyingma",
-          image:
-            "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
-        },
-        {
-          id: "rumtek",
-          name: "Rumtek Monastery",
-          location: "Rumtek, East Sikkim",
-          distance: "24 km from Gangtok",
-          elevation: "4,900 ft",
-          description:
-            "Largest monastery in Sikkim and the seat of the Karmapa lineage...",
-          founded: "1740",
-          difficulty: "easy",
-          rating: 4.9,
-          visitors: 25000,
-          region: "east",
-          sect: "kagyu",
-          image: "./assests/Rumtek_Monastery_04.jpg",
-        },
-        {
-          id: "enchay",
-          name: "Enchey Monastery",
-          location: "Gangtok, East Sikkim",
-          distance: "3 km from Gangtok town",
-          elevation: "5,500 ft",
-          description:
-            "200-year-old monastery known for its annual Chaam dances...",
-          founded: "1840",
-          difficulty: "easy",
-          rating: 4.3,
-          visitors: 18000,
-          region: "east",
-          sect: "nyingma",
-          image: "./assests/Enchey_Monastery_Prayer_Hall_(Dukhang).jpg",
-        },
-      ];
+  <!-- 🆕 Modal Popup -->
+  <div id="monastery-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img id="modal-image" src="" alt="Monastery Image" />
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <h2 id="modal-name"></h2>
 
-      // 360 degree view links map
-      const monastery360Links = {
-        sandruptse: "https://maps.app.goo.gl/CC6dYehAMfAbi4rk9",
-        sang: "https://maps.app.goo.gl/j9cEaVXTu68PMD6T9",
-        dodrul: "https://maps.app.goo.gl/B9fSe6Rj8fPkEex87",
-        pemayangtse: "https://maps.app.goo.gl/3CW7KLK6bCpZgjiR7",
-        tashiding: "https://maps.app.goo.gl/gYd8HBK3ep9cgNiT7",
-      };
+        <div class="modal-info"><strong>📍 Location:</strong> <span id="modal-location"></span></div>
+        <div class="modal-info"><strong>🏔 Distance:</strong> <span id="modal-distance"></span></div>
+        <div class="modal-info"><strong>⛰ Elevation:</strong> <span id="modal-elevation"></span></div>
+        <div class="modal-info"><strong>📅 Founded:</strong> <span id="modal-founded"></span></div>
+        <div class="modal-info"><strong>☸️ Sect:</strong> <span id="modal-sect"></span></div>
 
-      // State variables for filtering and pagination
-      let currentPage = 1;
-      const itemsPerPage = 6;
-      let currentFilteredMonasteries = [...monasteries];
+        <div class="modal-badges">
+          <span class="rating-badge" id="modal-rating"></span>
+          <span class="visitors-badge" id="modal-visitors"></span>
+        </div>
 
-      // Filter monasteries based on user input
-      function filterMonasteries() {
-        const searchText = document
-          .getElementById("search-input")
-          .value.toLowerCase();
-        const regionFilter = document.getElementById("region-filter").value;
-        const sectFilter = document.getElementById("sect-filter").value;
-        // Removed difficulty filter access since dropdown is removed
+        <p id="modal-description"></p>
 
-        const filtered = monasteries.filter((monastery) => {
-          const matchesSearch =
-            monastery.name.toLowerCase().includes(searchText) ||
-            monastery.location.toLowerCase().includes(searchText) ||
-            monastery.description.toLowerCase().includes(searchText);
+        <button id="modal-360-btn" class="view-360-btn">🌐 360° Virtual Tour</button>
+      </div>
+    </div>
+  </div>
 
-          const matchesRegion =
-            !regionFilter || monastery.region === regionFilter;
-          const matchesSect = !sectFilter || monastery.sect === sectFilter;
-          // Removed difficulty match check since dropdown is removed
+  <!-- 🆕 Enhanced Script -->
+  <script>
+    const monasteries = [
+      {
+        id: "sandruptse",
+        name: "Sandruptse Monastery",
+        location: "Namchi, South Sikkim",
+        distance: "Sandruptse Hill, 5 km from Namchi town",
+        elevation: "5,500 ft",
+        description:
+          "Modern monastery complex featuring the world's largest statue of Guru Padmasambhava, standing at 135 feet. The monastery is a center for Buddhist teachings and meditation, offering panoramic views of the Himalayas. It's also known for its vibrant prayer flags and peaceful ambiance.",
+        founded: "1998",
+        difficulty: "difficult",
+        rating: 4.6,
+        visitors: 7000,
+        region: "south",
+        sect: "nyingma",
+        image: "./assests/samduptse hill.jpg",
+      },
+      {
+        id: "sang",
+        name: "Sang Monastery",
+        location: "Sang, South Sikkim",
+        distance: "Sang village, 12 km from Namchi towards Ravangla",
+        elevation: "4,800 ft",
+        description:
+          "Ancient monastery known for its peaceful setting and traditional Nyingma teachings. Surrounded by pine forests, Sang Monastery offers a serene retreat for spiritual seekers and visitors looking to experience authentic monastic life.",
+        founded: "1716",
+        difficulty: "easy",
+        rating: 4.0,
+        visitors: 1500,
+        region: "south",
+        sect: "nyingma",
+        image: "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
+      },
+      {
+        id: "dodrul",
+        name: "Do Drul Chorten",
+        location: "Gangtok, East Sikkim",
+        distance: "Near Institute of Tibetology, Gangtok",
+        elevation: "5,410 ft",
+        description:
+          "Important stupa built by Trulshik Rinpoche in 1945 to ward off evil and promote peace. The chorten contains precious relics, scriptures, and statues. 108 prayer wheels surround the structure, making it a significant pilgrimage site.",
+        founded: "1945",
+        difficulty: "easy",
+        rating: 4.5,
+        visitors: 15000,
+        region: "east",
+        sect: "nyingma",
+        image: "./assests/do-drul.jpg",
+      },
+      {
+        id: "sinon",
+        name: "Sinon Monastery",
+        location: "Sinon, East Sikkim",
+        distance: "Sinon village, 25 km from Gangtok via Ranipool",
+        elevation: "3,800 ft",
+        description:
+          "Historic Nyingma monastery known for its ancient manuscripts and traditional architecture. It plays a vital role in preserving Sikkimese Buddhist culture and hosts annual religious festivals attended by monks and devotees.",
+        founded: "1716",
+        difficulty: "moderate",
+        rating: 3.9,
+        visitors: 1000,
+        region: "east",
+        sect: "nyingma",
+        image: "./assests/Sinon_Monastery,_West_Sikkim_06.jpg",
+      },
+      {
+        id: "pemayangtse",
+        name: "Pemayangtse Monastery",
+        location: "Pelling, West Sikkim",
+        distance: "Pelling, 7 km from Gyalshing",
+        elevation: "6,840 ft",
+        description:
+          "One of Sikkim's oldest and most important monasteries of the Nyingma sect, established in 1705. Famous for its intricate wood carvings and the 'Lhakhang' prayer hall, it's a major pilgrimage site and tourist attraction.",
+        founded: "1705",
+        difficulty: "moderate",
+        rating: 4.7,
+        visitors: 12000,
+        region: "west",
+        sect: "nyingma",
+        image: "./assests/Pemayangtse_Monastery,_Pelling,_West_Sikkim_15.jpg",
+      },
+      {
+        id: "tashiding",
+        name: "Tashiding Monastery",
+        location: "Tashiding, West Sikkim",
+        distance: "Tashiding hilltop, 19 km from Yoksum",
+        elevation: "4,790 ft",
+        description:
+          "Sacred monastery believed to be blessed by Guru Padmasambhava himself. It is one of the most revered sites in Sikkim and hosts the annual Bhumchu festival, where a sacred water vase is opened to predict the year's fortune.",
+        founded: "1641",
+        difficulty: "difficult",
+        rating: 4.8,
+        visitors: 8000,
+        region: "west",
+        sect: "nyingma",
+        image: "https://images.pexels.com/photos/4032830/pexels-photo-4032830.jpeg",
+      },
+      {
+        id: "rumtek",
+        name: "Rumtek Monastery",
+        location: "Rumtek, East Sikkim",
+        distance: "24 km from Gangtok",
+        elevation: "4,900 ft",
+        description:
+          "Largest monastery in Sikkim and the seat of the Karmapa lineage. Known as the 'Dharma Chakra Centre', it features stunning architecture, golden stupas, and hosts major Kagyu festivals like the Kagyu Thongten.",
+        founded: "1740",
+        difficulty: "easy",
+        rating: 4.9,
+        visitors: 25000,
+        region: "east",
+        sect: "kagyu",
+        image: "./assests/Rumtek_Monastery_04.jpg",
+      },
+      {
+        id: "enchay",
+        name: "Enchey Monastery",
+        location: "Gangtok, East Sikkim",
+        distance: "3 km from Gangtok town",
+        elevation: "5,500 ft",
+        description:
+          "200-year-old monastery known for its annual Chaam dances, where monks perform masked rituals to drive away evil spirits. The monastery is believed to be protected by local deities and offers spiritual tranquility.",
+        founded: "1840",
+        difficulty: "easy",
+        rating: 4.3,
+        visitors: 18000,
+        region: "east",
+        sect: "nyingma",
+        image: "./assests/Enchey_Monastery_Prayer_Hall_(Dukhang).jpg",
+      },
+    ];
 
-          return matchesSearch && matchesRegion && matchesSect;
-        });
+    const monastery360Links = {
+      sandruptse: "https://maps.app.goo.gl/CC6dYehAMfAbi4rk9",
+      sang: "https://maps.app.goo.gl/j9cEaVXTu68PMD6T9",
+      dodrul: "https://maps.app.goo.gl/B9fSe6Rj8fPkEex87",
+      pemayangtse: "https://maps.app.goo.gl/3CW7KLK6bCpZgjiR7",
+      tashiding: "https://maps.app.goo.gl/gYd8HBK3ep9cgNiT7",
+    };
 
-        currentFilteredMonasteries = filtered;
-        currentPage = 1; // Reset to the first page after filtering
-        renderPage();
-      }
+    let currentPage = 1;
+    const itemsPerPage = 6;
+    let currentFilteredMonasteries = [...monasteries];
 
-      // Display a specific page of monasteries
-      function displayMonasteries(pageItems) {
-        const container = document.getElementById("monasteries-container");
-        container.innerHTML = "";
+    function filterMonasteries() {
+      const searchText = document.getElementById("search-input").value.toLowerCase();
+      const regionFilter = document.getElementById("region-filter").value;
+      const sectFilter = document.getElementById("sect-filter").value;
 
-        if (pageItems.length === 0) {
-          container.innerHTML =
-            '<p class="no-results">No monasteries found matching your criteria.</p>';
-          document.getElementById("pagination").innerHTML = "";
-          return;
-        }
+      const filtered = monasteries.filter((monastery) => {
+        const matchesSearch =
+          monastery.name.toLowerCase().includes(searchText) ||
+          monastery.location.toLowerCase().includes(searchText) ||
+          monastery.description.toLowerCase().includes(searchText);
 
-        pageItems.forEach((monastery) => {
-          const card = document.createElement("div");
-          card.className = "monastery-card";
-          card.innerHTML = `
-                <div class="monastery-image">
-                    <img src="${monastery.image}" alt="${monastery.name}">
-                    <div class="monastery-badges">
-                        <button class="view-360-btn" onclick="view360('${
-                          monastery.id
-                        }')">360° View</button>
-                        <span class="rating-badge">⭐ ${monastery.rating}</span>
-                        <span class="visitors-badge">👥 ${monastery.visitors.toLocaleString()} visitors</span>
-                    </div>
-                </div>
-                <div class="monastery-content">
-                    <h3>${monastery.name}</h3>
-                    <p class="location">📍 ${monastery.location}</p>
-                    <p class="distance">🏔 ${monastery.distance}</p>
-                    <p class="elevation">⛰ ${monastery.elevation}</p>
-                    <p class="description">${monastery.description}</p>
-                    <p class="founded">Founded: ${monastery.founded}</p>
-                </div>
-            `;
+        const matchesRegion = !regionFilter || monastery.region === regionFilter;
+        const matchesSect = !sectFilter || monastery.sect === sectFilter;
 
-          card.addEventListener("click", () => {
-            openMonasteryDetail(monastery.id);
-          });
-
-          container.appendChild(card);
-        });
-      }
-
-      function openMonasteryDetail(id) {
-        alert(
-          `Details for ${id} monastery would open here. In a real implementation, this would navigate to a detailed view.`
-        );
-      }
-
-      // Handler for 360 Degree View Button
-      window.view360 = function (id) {
-        const link = monastery360Links[id];
-        if (link) {
-          window.open(link, "_blank");
-        } else {
-          alert("360° View not available for this monastery yet.");
-        }
-      };
-
-      // Dynamically render pagination buttons
-      function renderPagination() {
-        const paginationContainer = document.getElementById("pagination");
-        paginationContainer.innerHTML = "";
-        const pageCount = Math.ceil(
-          currentFilteredMonasteries.length / itemsPerPage
-        );
-
-        if (pageCount <= 1) return;
-
-        for (let i = 1; i <= pageCount; i++) {
-          const button = document.createElement("button");
-          button.innerText = i;
-          button.onclick = () => changePage(i);
-          if (i === currentPage) {
-            button.classList.add("active");
-          }
-          paginationContainer.appendChild(button);
-        }
-      }
-
-      // Handle changing pages
-      function changePage(page) {
-        currentPage = page;
-        renderPage();
-      }
-
-      // Render the current page's items and pagination
-      function renderPage() {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const pageItems = currentFilteredMonasteries.slice(
-          startIndex,
-          endIndex
-        );
-        displayMonasteries(pageItems);
-        renderPagination();
-      }
-
-      // Initialize the page
-      document.addEventListener("DOMContentLoaded", () => {
-        document
-          .getElementById("search-input")
-          .addEventListener("input", filterMonasteries);
-        document
-          .getElementById("region-filter")
-          .addEventListener("change", filterMonasteries);
-        document
-          .getElementById("sect-filter")
-          .addEventListener("change", filterMonasteries);
-
-        renderPage();
+        return matchesSearch && matchesRegion && matchesSect;
       });
-    </script>
-  </body>
+
+      currentFilteredMonasteries = filtered;
+      currentPage = 1;
+      renderPage();
+    }
+
+    function displayMonasteries(pageItems) {
+      const container = document.getElementById("monasteries-container");
+      container.innerHTML = "";
+
+      if (pageItems.length === 0) {
+        container.innerHTML =
+          '<p class="no-results">No monasteries found matching your criteria.</p>';
+        document.getElementById("pagination").innerHTML = "";
+        return;
+      }
+
+      pageItems.forEach((monastery) => {
+        const card = document.createElement("div");
+        card.className = "monastery-card";
+        card.innerHTML = `
+          <div class="monastery-image">
+            <img src="${monastery.image.trim()}" alt="${monastery.name}">
+            <div class="monastery-badges">
+              <button class="view-360-btn" onclick="view360('${monastery.id}')">360° View</button>
+              <span class="rating-badge">⭐ ${monastery.rating}</span>
+              <span class="visitors-badge">👥 ${monastery.visitors.toLocaleString()}</span>
+            </div>
+          </div>
+          <div class="monastery-content">
+            <h3>${monastery.name}</h3>
+            <p class="location">📍 ${monastery.location}</p>
+            <p class="distance">🏔 ${monastery.distance}</p>
+            <p class="elevation">⛰ ${monastery.elevation}</p>
+            <p class="description">${monastery.description.substring(0, 120)}...</p>
+            <p class="founded">Founded: ${monastery.founded}</p>
+          </div>
+        `;
+        card.addEventListener("click", () => openMonasteryDetail(monastery.id));
+        container.appendChild(card);
+      });
+    }
+
+    function openMonasteryDetail(id) {
+      const monastery = monasteries.find((m) => m.id === id);
+      if (!monastery) return;
+
+      document.getElementById("modal-name").textContent = monastery.name;
+      document.getElementById("modal-location").textContent = monastery.location;
+      document.getElementById("modal-distance").textContent = monastery.distance;
+      document.getElementById("modal-elevation").textContent = monastery.elevation;
+      document.getElementById("modal-founded").textContent = monastery.founded;
+      document.getElementById("modal-sect").textContent = capitalizeFirstLetter(monastery.sect);
+      document.getElementById("modal-rating").textContent = `⭐ ${monastery.rating}`;
+      document.getElementById("modal-visitors").textContent = `👥 ${monastery.visitors.toLocaleString()} visitors`;
+      document.getElementById("modal-description").textContent = monastery.description;
+      document.getElementById("modal-image").src = monastery.image.trim();
+
+      const modal360Btn = document.getElementById("modal-360-btn");
+      if (monastery360Links[id]) {
+        modal360Btn.style.display = "inline-flex";
+        modal360Btn.onclick = () => window.open(monastery360Links[id], "_blank");
+      } else {
+        modal360Btn.style.display = "none";
+      }
+
+      document.getElementById("monastery-modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("monastery-modal").style.display = "none";
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    window.view360 = function (id) {
+      const link = monastery360Links[id.trim()];
+      if (link) {
+        window.open(link.trim(), "_blank");
+      } else {
+        alert("360° View not available for this monastery yet.");
+      }
+    };
+
+    function renderPagination() {
+      const paginationContainer = document.getElementById("pagination");
+      paginationContainer.innerHTML = "";
+      const pageCount = Math.ceil(currentFilteredMonasteries.length / itemsPerPage);
+
+      if (pageCount <= 1) return;
+
+      for (let i = 1; i <= pageCount; i++) {
+        const button = document.createElement("button");
+        button.innerText = i;
+        button.onclick = () => changePage(i);
+        if (i === currentPage) button.classList.add("active");
+        paginationContainer.appendChild(button);
+      }
+    }
+
+    function changePage(page) {
+      currentPage = page;
+      renderPage();
+    }
+
+    function renderPage() {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageItems = currentFilteredMonasteries.slice(startIndex, endIndex);
+      displayMonasteries(pageItems);
+      renderPagination();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("search-input").addEventListener("input", filterMonasteries);
+      document.getElementById("region-filter").addEventListener("change", filterMonasteries);
+      document.getElementById("sect-filter").addEventListener("change", filterMonasteries);
+      renderPage();
+    });
+  </script>
+
+  <!-- 🆕 Add this CSS at the end of your existing <style> block -->
+  <style>
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-4);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .modal-header {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .modal-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: var(--space-2);
+      right: var(--space-2);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: var(--font-size-xl);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-body {
+      padding: var(--space-4);
+      overflow-y: auto;
+    }
+
+    .modal-body h2 {
+      font-size: var(--font-size-2xl);
+      color: var(--gray-900);
+      margin-bottom: var(--space-3);
+    }
+
+    .modal-info {
+      font-size: var(--font-size-sm);
+      color: var(--gray-700);
+      margin-bottom: var(--space-1);
+    }
+
+    .modal-badges {
+      display: flex;
+      gap: var(--space-2);
+      margin: var(--space-3) 0;
+      flex-wrap: wrap;
+    }
+
+    .modal-badges span {
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+    }
+
+    #modal-360-btn {
+      margin-top: var(--space-3);
+    }
+
+    /* Close modal when clicking outside */
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+    }
+  </style>
+</body>
 </html>
